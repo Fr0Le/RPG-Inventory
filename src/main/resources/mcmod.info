@@ -1,0 +1,16 @@
+[
+{
+  "modid": "rpgimod",
+  "name": "RPG Inventory",
+  "description": "RPG Inventory demo",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://hell-z.ru/",
+  "updateUrl": "",
+  "authorList": ["Fr0Le"],
+  "credits": "All code contributors",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

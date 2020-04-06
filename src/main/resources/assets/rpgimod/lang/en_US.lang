@@ -1,0 +1,15 @@
+itemGroup.tabRPGi=RPG Inventory
+item.helmet.name=Helmet
+item.body.name=Body
+item.pants.name=Pants
+item.boots.name=Boots
+item.shoulders.name=Shoulders
+item.bracers.name=Bracers
+item.gloves.name=Gloves
+item.belt.name=Belt
+armor.defence=Defence
+jewel.description=Some effect
+item.necklace.name=Necklace
+item.ringRed.name=Red Ring
+item.ringBlue.name=Blue Ring
+item.artifact.name=Artifact

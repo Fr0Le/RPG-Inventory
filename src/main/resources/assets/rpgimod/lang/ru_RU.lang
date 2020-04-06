@@ -1,0 +1,15 @@
+itemGroup.tabRPGi=RPG Инвентарь
+item.helmet.name=Шлем
+item.body.name=Броня
+item.pants.name=Штаны
+item.boots.name=Ботинки
+item.shoulders.name=Наплечники
+item.bracers.name=Наручи
+item.gloves.name=Перчатки
+item.belt.name=Пояс
+armor.defence=Защита
+jewel.description=Что-то дает
+item.necklace.name=Ожерелье
+item.ringRed.name=Красное кольцо
+item.ringBlue.name=Синее кольцо
+item.artifact.name=Артефакт
