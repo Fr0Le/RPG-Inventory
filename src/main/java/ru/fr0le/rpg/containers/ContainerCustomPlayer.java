@@ -188,6 +188,7 @@ public class ContainerCustomPlayer extends Container {
 			slot.putStack((ItemStack)null);
 		} else {
 			slot.onSlotChanged();
+			slot.putStack((ItemStack)null);
 		}
 	}
 
