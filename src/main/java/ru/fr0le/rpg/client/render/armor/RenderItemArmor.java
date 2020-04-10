@@ -12,10 +12,10 @@ import ru.fr0le.rpg.client.resources.Resources;
 import ru.fr0le.rpg.items.armor.ArmorType.customArmor;
 
 public class RenderItemArmor {			
-	
+
 	private static ResourceLocation texture;
 	private static IModelCustom model;
-	
+
 	public static void setResources(ItemStack item) {				
 		Item equip = item.getItem();
 		if(equip instanceof customArmor) {
@@ -23,9 +23,9 @@ public class RenderItemArmor {
 			model = Resources.customArmorModel;
 		}		
 	}
-   
+
 	public static class renderItemHelmet implements IItemRenderer {
-		
+
 		@Override
 		public boolean handleRenderType(ItemStack item, ItemRenderType type) { 
 			return true; 
@@ -39,7 +39,7 @@ public class RenderItemArmor {
 		@Override
 		public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 			setResources(item);
-			
+
 			if (type == ItemRenderType.INVENTORY) {
 				GL11.glPushMatrix();
 				Minecraft.getMinecraft().renderEngine.bindTexture(texture);
@@ -64,9 +64,9 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 	public static class renderItemBody implements IItemRenderer {
-		
+
 		@Override
 		public boolean handleRenderType(ItemStack item, ItemRenderType type) { 
 			return true; 
@@ -111,7 +111,7 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 	public static class renderItemPants implements IItemRenderer {
 
 		@Override
@@ -154,7 +154,7 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 	public static class renderItemBoots implements IItemRenderer {
 
 		@Override
@@ -197,9 +197,9 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
 
-	
+
+
 	public static class renderItemShoulders implements IItemRenderer {
 
 		@Override
@@ -243,7 +243,7 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 	public static class renderItemBracers implements IItemRenderer {
 
 		@Override
@@ -287,7 +287,7 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 	public static class renderItemGloves implements IItemRenderer {
 
 		@Override
@@ -331,7 +331,7 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 	public static class renderItemBelt implements IItemRenderer {
 
 		@Override
@@ -371,5 +371,5 @@ public class RenderItemArmor {
 			}
 		}
 	}
-	
+
 }

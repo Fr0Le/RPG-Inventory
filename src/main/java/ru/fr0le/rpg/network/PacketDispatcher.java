@@ -15,13 +15,12 @@ import ru.fr0le.rpg.network.client.SyncEquipShouldersMessage;
 import ru.fr0le.rpg.network.server.OpenGuiMessage;
 
 public class PacketDispatcher {
-	
+
 	private static byte packetId = 0;
 
 	private static final SimpleNetworkWrapper dispatcher = NetworkRegistry.INSTANCE.newSimpleChannel(Info.modid);
 
-	public static final void registerPackets() {
-		
+	public static final void registerPackets() {		
 		registerMessage(SyncEquipShouldersMessage.class);
 		registerMessage(SyncEquipBracersMessage.class);
 		registerMessage(SyncEquipGlovesMessage.class);
@@ -68,4 +67,5 @@ public class PacketDispatcher {
 	public static final void sendToServer(IMessage message) {
 		PacketDispatcher.dispatcher.sendToServer(message);
 	}
+
 }

@@ -10,18 +10,16 @@ import ru.fr0le.rpg.network.PacketDispatcher;
 import ru.fr0le.rpg.network.server.OpenGuiMessage;
 
 public class OpenInventory {
-	
+
 	@SubscribeEvent
-    public void onOpenGui(GuiOpenEvent event) {
-        if(event.gui instanceof GuiInventory) {
-        	EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-        	if (!player.capabilities.isCreativeMode) {
-        		event.setCanceled(true);
-        		PacketDispatcher.sendToServer(new OpenGuiMessage(Core.GUI_CUSTOM_INV));
-        	} else {
-        		event.setCanceled(false);
-            }
-        }
-    }
-	
+	public void onOpenGui(GuiOpenEvent event) {
+		if(event.gui instanceof GuiInventory) {
+			EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+			if (!player.capabilities.isCreativeMode) {
+				event.setCanceled(true);
+				PacketDispatcher.sendToServer(new OpenGuiMessage(Core.GUI_CUSTOM_INV));
+			}
+		}
+	}
+
 }

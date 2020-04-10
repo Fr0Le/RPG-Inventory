@@ -11,9 +11,9 @@ import ru.fr0le.rpg.containers.ContainerCustomPlayer;
 import ru.fr0le.rpg.entities.player.InventoryCustomPlayer;
 
 public class GuiCustomPlayerInventory extends GuiContainer {
-	
-	private float xSize_lo;
-	private float ySize_lo;
+
+	private int xSize_lo;
+	private int ySize_lo;
 
 	private final InventoryCustomPlayer inventory;
 
@@ -34,7 +34,7 @@ public class GuiCustomPlayerInventory extends GuiContainer {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(Resources.inventoryTexture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-		
+
 		//рендер кастомных слотов когда пустые
 		for (int i = 0; i < 4; i++) {
 			int noEquip = 169;
@@ -43,7 +43,7 @@ public class GuiCustomPlayerInventory extends GuiContainer {
 			}
 			drawTexturedModalRect(guiLeft + 7, guiTop + 7 + 18 * i, 7 + noEquip, 7 + 18 * i, 18, 18);
 		}
-		
+
 		for (int i = 0; i < 4; i++) {
 			int noEquip = 205;
 			if(inventory.getStackInSlot(i + 4) != null) {
@@ -55,5 +55,5 @@ public class GuiCustomPlayerInventory extends GuiContainer {
 		//рендер игрока в инвентаре
 		GuiInventory.func_147046_a(guiLeft - 70, guiTop + 165, 85, guiLeft + 51 - xSize_lo, guiTop + 25 - ySize_lo, mc.thePlayer);		
 	}
-	
+
 }

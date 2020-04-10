@@ -9,7 +9,7 @@ import ru.fr0le.rpg.containers.ContainerCustomPlayer;
 import ru.fr0le.rpg.entities.player.ExtendedPlayer;
 
 public class GuiHandler implements IGuiHandler {
-	
+
 	@Override
 	public Object getServerGuiElement(int guiId, EntityPlayer player, World world, int x, int y, int z) {
 		if (guiId == Core.GUI_CUSTOM_INV) return new ContainerCustomPlayer(player, player.inventory, ExtendedPlayer.get(player).inventory);
@@ -21,5 +21,5 @@ public class GuiHandler implements IGuiHandler {
 		if (guiId == Core.GUI_CUSTOM_INV) return new GuiCustomPlayerInventory(player, player.inventory, ExtendedPlayer.get(player).inventory);
 		else return null;
 	}
-	
+
 }

@@ -5,23 +5,23 @@ import java.util.List;
 import net.minecraft.util.StatCollector;
 
 public class JewelsType {
-	
+
 	public interface customJewel {
-		
+
 	}
-	
+
 	public interface jewelTypeNecklace {
-		
+
 	}
-	
+
 	public interface jewelTypeRing {
-		
+
 	}
-	
+
 	public interface jewelTypeArtifact {
-		
+
 	}
-	
+
 	public static String getTranslate(String s) {
 		return StatCollector.translateToLocal(s);
 	}

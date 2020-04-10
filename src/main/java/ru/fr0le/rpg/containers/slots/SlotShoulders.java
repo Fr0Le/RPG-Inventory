@@ -7,7 +7,7 @@ import ru.fr0le.rpg.containers.slots.SlotType.customArmorSlot;
 import ru.fr0le.rpg.items.armor.ArmorType.armorTypeShoulders;
 
 public class SlotShoulders extends Slot implements customArmorSlot {
-	
+
 	public SlotShoulders(IInventory inventory, int slotIndex, int x, int y) {
 		super(inventory, slotIndex, x, y);
 	}
@@ -16,5 +16,5 @@ public class SlotShoulders extends Slot implements customArmorSlot {
 		if(stack.getItem() instanceof armorTypeShoulders) return true;
 		else return false;
 	}
-	
+
 }

@@ -14,33 +14,32 @@ import ru.fr0le.rpg.network.PacketDispatcher;
 @Mod(modid = Info.modid, name = Info.name, version = Info.version)
 
 public class Core {
-	
+
 	@Mod.Instance(Info.modid)
 	public static Core mod;
-		
-	@SidedProxy(clientSide = "ru.fr0le.rpg.client.ClientProxy", 
-				serverSide = "ru.fr0le.rpg.common.CommonProxy")
+
+	@SidedProxy(clientSide = "ru.fr0le.rpg.client.ClientProxy", serverSide = "ru.fr0le.rpg.common.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	private static int modGuiIndex = 0;
 	public static final int GUI_CUSTOM_INV = modGuiIndex++;
-	
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {		
 		proxy.preInit();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		PacketDispatcher.registerPackets();
 	}
-		
+
 	@EventHandler
 	public void Init(FMLInitializationEvent event) {
 		proxy.Init();
 		System.out.println(Info.name + " has been successfully initialized");
 	}
-		
+
 	@EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event) {
 		proxy.postInit();
 	}
-	
+
 }

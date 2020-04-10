@@ -5,41 +5,41 @@ import java.util.List;
 import net.minecraft.util.StatCollector;
 
 public class ArmorType {
-	
+
 	public interface customArmor {
-		
+
 	}
-	
+
 	public interface armorTypeHelmet {
-		
+
 	}
-	
+
 	public interface armorTypeBody {
-		
+
 	}
-	
+
 	public interface armorTypePants {
-		
+
 	}
-	
+
 	public interface armorTypeBoots {
-		
+
 	}
-	
+
 	public interface armorTypeShoulders {
-		
+
 	}
-	
+
 	public interface armorTypeBracers {
-		
+
 	}
-	
+
 	public interface armorTypeGloves {
-		
+
 	}
-	
+
 	public interface armorTypeBelt {
-		
+
 	}
 
 	public static String getTranslate(String s) {

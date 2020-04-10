@@ -8,16 +8,16 @@ import ru.fr0le.rpg.client.render.armor.RenderEquipArmor;
 import ru.fr0le.rpg.items.armor.ArmorType.armorTypeBoots;
 
 public class RenderBoots {
-	
+
 	public RenderBoots() {
-		
+
 	}
-	
+
 	public void render(EntityPlayer player, RenderPlayer renderModel) {
 		ItemStack equipStack = player.getCurrentArmor(0);
 		Item equip = equipStack.getItem();
-		
+
 		if(equip instanceof armorTypeBoots) RenderEquipArmor.renderBoots(renderModel, equip);		
 	}
-	
+
 }

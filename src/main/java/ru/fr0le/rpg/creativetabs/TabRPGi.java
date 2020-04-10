@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import ru.fr0le.rpg.items.armor.LoadItemArmor;
 
 public class TabRPGi extends CreativeTabs {
-	
+
 	public TabRPGi(int nextID, String lable) {
 		super(nextID, lable);
 	}
@@ -14,5 +14,5 @@ public class TabRPGi extends CreativeTabs {
 	public Item getTabIconItem() {
 		return LoadItemArmor.body;
 	}
-	
+
 }

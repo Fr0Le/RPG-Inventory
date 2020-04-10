@@ -7,7 +7,7 @@ import ru.fr0le.rpg.containers.slots.SlotType.customArmorSlot;
 import ru.fr0le.rpg.items.jewels.JewelsType.jewelTypeNecklace;
 
 public class SlotNecklace extends Slot implements customArmorSlot {
-	
+
 	public SlotNecklace(IInventory inventory, int slotIndex, int x, int y) {
 		super(inventory, slotIndex, x, y);
 	}
@@ -16,5 +16,5 @@ public class SlotNecklace extends Slot implements customArmorSlot {
 		if(stack.getItem() instanceof jewelTypeNecklace) return true;
 		else return false;
 	}
-	
+
 }

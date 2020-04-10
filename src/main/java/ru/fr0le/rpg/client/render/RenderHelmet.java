@@ -8,16 +8,16 @@ import ru.fr0le.rpg.client.render.armor.RenderEquipArmor;
 import ru.fr0le.rpg.items.armor.ArmorType.armorTypeHelmet;
 
 public class RenderHelmet {
-	
+
 	public RenderHelmet() {
-		
+
 	}
-	
+
 	public void render(EntityPlayer player, RenderPlayer renderModel) {
 		ItemStack equipStack = player.getCurrentArmor(3);
 		Item equip = equipStack.getItem();
-		
+
 		if(equip instanceof armorTypeHelmet) RenderEquipArmor.renderHelmet(renderModel, equip);	
 	}
-	
+
 }

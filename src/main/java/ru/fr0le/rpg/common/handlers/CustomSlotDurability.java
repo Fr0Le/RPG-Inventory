@@ -5,7 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import ru.fr0le.rpg.containers.ContainerCustomPlayer;
+import ru.fr0le.rpg.containers.CustomSlots;
 import ru.fr0le.rpg.entities.player.ExtendedPlayer;
 
 public class CustomSlotDurability {
@@ -18,8 +18,8 @@ public class CustomSlotDurability {
 
 		if(event.source.getEntity() instanceof Entity) {
 			EntityPlayer player = (EntityPlayer)event.entityLiving;
-	
-			for(int i = ContainerCustomPlayer.slots[0]; i < ContainerCustomPlayer.slots.length; i++) {
+
+			for(int i = 0; i < CustomSlots.values().length; i++) {
 				if(ExtendedPlayer.get(player).inventory.getStackInSlot(i) != null) {
 					ItemStack stack = ExtendedPlayer.get(player).inventory.getStackInSlot(i);
 					stack.damageItem(1, event.entityLiving);

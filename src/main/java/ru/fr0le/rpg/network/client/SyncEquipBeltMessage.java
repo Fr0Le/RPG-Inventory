@@ -6,20 +6,20 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
-import ru.fr0le.rpg.containers.ContainerCustomPlayer;
+import ru.fr0le.rpg.containers.CustomSlots;
 import ru.fr0le.rpg.entities.player.ExtendedPlayer;
 import ru.fr0le.rpg.items.armor.LoadItemArmor;
 import ru.fr0le.rpg.network.AbstractMessage.AbstractClientMessage;
 
 public class SyncEquipBeltMessage extends AbstractClientMessage<SyncEquipBeltMessage> {
-	
+
 	private int playerID;
 	private int equipID;
-			
+
 	public SyncEquipBeltMessage() {
-		
+
 	}
-			
+
 	public SyncEquipBeltMessage(int playerID, int equipID) {
 		this.playerID = playerID;
 		this.equipID = equipID;
@@ -42,7 +42,7 @@ public class SyncEquipBeltMessage extends AbstractClientMessage<SyncEquipBeltMes
 		if(Minecraft.getMinecraft().thePlayer.getEntityId() == playerID) {
 			return;
 		}
-		
+
 		Entity playerToUpd = player.worldObj.getEntityByID(playerID);
 		if(playerToUpd == null || !(playerToUpd instanceof EntityPlayer)) {
 			return;
@@ -51,7 +51,7 @@ public class SyncEquipBeltMessage extends AbstractClientMessage<SyncEquipBeltMes
 		ItemStack itemStack = null;
 		if (equipID == 1) itemStack = new ItemStack(LoadItemArmor.belt);
 		else itemStack = null;
-		ExtendedPlayer.get((EntityPlayer) playerToUpd).inventory.inventory[ContainerCustomPlayer.slotBelt] = itemStack;
+		ExtendedPlayer.get((EntityPlayer) playerToUpd).inventory.inventory[CustomSlots.BELT.ordinal()] = itemStack;
 	}
-	
+
 }

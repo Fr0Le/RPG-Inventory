@@ -7,7 +7,7 @@ import ru.fr0le.rpg.containers.slots.SlotType.customArmorSlot;
 import ru.fr0le.rpg.items.jewels.JewelsType.jewelTypeRing;
 
 public class SlotRing extends Slot implements customArmorSlot {
-	
+
 	public SlotRing(IInventory inventory, int slotIndex, int x, int y) {
 		super(inventory, slotIndex, x, y);
 	}
@@ -16,5 +16,5 @@ public class SlotRing extends Slot implements customArmorSlot {
 		if(stack.getItem() instanceof jewelTypeRing) return true;
 		else return false;
 	}
-	
+
 }

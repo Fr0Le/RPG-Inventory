@@ -7,18 +7,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class ExtendedPlayer implements IExtendedEntityProperties {
-	
+
 	public final static String EXT_PROP_NAME = "ExtendedPlayer";
 
 	private EntityPlayer player;
-	
+
 	public final InventoryCustomPlayer inventory = new InventoryCustomPlayer(player);
-	
+
 	@Override
 	public void init(Entity entity, World world) {
-		
+
 	}
-	
+
 	public ExtendedPlayer(EntityPlayer player) {
 		this.player = player;
 	}
@@ -47,5 +47,5 @@ public class ExtendedPlayer implements IExtendedEntityProperties {
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		inventory.readFromNBT(properties);
 	}
-	
+
 }

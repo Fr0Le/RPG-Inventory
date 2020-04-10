@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 import ru.fr0le.rpg.containers.slots.SlotType.customArmorSlot;
 
 public class SlotArmor extends Slot implements customArmorSlot {
-	
+
 	final int armorType;
 
 	final EntityPlayer player;
@@ -36,5 +36,5 @@ public class SlotArmor extends Slot implements customArmorSlot {
 	public IIcon getBackgroundIconIndex() {
 		return ItemArmor.func_94602_b(this.armorType);
 	}
-	
+
 }

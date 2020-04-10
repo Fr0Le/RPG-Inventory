@@ -6,14 +6,14 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import ru.fr0le.rpg.containers.ContainerCustomPlayer;
+import ru.fr0le.rpg.containers.CustomSlots;
 
 public class InventoryCustomPlayer extends InventoryPlayer implements IInventory {
-	
+
 	private final String name = "Inventory";
 	private final String tagName = "CustomInvTag";
 
-	public static final int INV_SIZE = ContainerCustomPlayer.slots.length;
+	public static final int INV_SIZE = CustomSlots.values().length;
 
 	public ItemStack[] inventory = new ItemStack[INV_SIZE];
 
@@ -102,12 +102,12 @@ public class InventoryCustomPlayer extends InventoryPlayer implements IInventory
 
 	@Override
 	public void openInventory() {
-		
+
 	}
 
 	@Override
 	public void closeInventory() {
-		
+
 	}
 
 	@Override
@@ -138,5 +138,7 @@ public class InventoryCustomPlayer extends InventoryPlayer implements IInventory
 			}
 		}
 	}
-	
+
+	//TODO очистку кастомных слотов при /clear
+
 }

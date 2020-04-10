@@ -14,9 +14,9 @@ import net.minecraft.network.PacketBuffer;
 import ru.fr0le.rpg.Core;
 
 public abstract class AbstractMessage<T extends AbstractMessage<T>> implements IMessage, IMessageHandler <T, IMessage> {
-	
+
 	protected abstract void read(PacketBuffer buffer) throws IOException;
-	
+
 	protected abstract void write(PacketBuffer buffer) throws IOException;
 
 	public abstract void process(EntityPlayer player, Side side);

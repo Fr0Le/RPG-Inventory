@@ -7,7 +7,7 @@ import ru.fr0le.rpg.containers.slots.SlotType.customArmorSlot;
 import ru.fr0le.rpg.items.armor.ArmorType.armorTypeBracers;
 
 public class SlotBracers extends Slot implements customArmorSlot {
-	
+
 	public SlotBracers(IInventory inventory, int slotIndex, int x, int y) {
 		super(inventory, slotIndex, x, y);
 	}
@@ -16,5 +16,5 @@ public class SlotBracers extends Slot implements customArmorSlot {
 		if(stack.getItem() instanceof armorTypeBracers) return true;
 		else return false;
 	}
-	
+
 }
