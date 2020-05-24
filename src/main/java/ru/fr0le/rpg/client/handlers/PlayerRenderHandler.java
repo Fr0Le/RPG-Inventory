@@ -16,6 +16,15 @@ import ru.fr0le.rpg.entities.player.ExtendedPlayer;
 
 public class PlayerRenderHandler {
 
+	private RenderHelmet renderHelmet = new RenderHelmet();
+	private RenderBody renderBody = new RenderBody();
+	private RenderPants renderPants = new RenderPants();
+	private RenderBoots renderBoots = new RenderBoots();
+	private RenderShoulders renderShoulders = new RenderShoulders();
+	private RenderBracers renderBracers = new RenderBracers();
+	private RenderGloves renderGloves = new RenderGloves();
+	private RenderBelt renderBelt = new RenderBelt();
+
 	@SubscribeEvent
 	public void onPlayerRenderTick(RenderPlayerEvent.Specials.Post event) {
 		if(event.entityPlayer == null) {
@@ -23,15 +32,15 @@ public class PlayerRenderHandler {
 		}		
 
 		EntityPlayer player = (EntityPlayer) event.entityLiving;
-		if (player.getCurrentArmor(3) != null) new RenderHelmet().render(player, event.renderer);
-		if (player.getCurrentArmor(2) != null) new RenderBody().render(player, event.renderer);
-		if (player.getCurrentArmor(1) != null) new RenderPants().render(player, event.renderer);
-		if (player.getCurrentArmor(0) != null) new RenderBoots().render(player, event.renderer);		
+		if (player.getCurrentArmor(3) != null) renderHelmet.render(player, event.renderer);
+		if (player.getCurrentArmor(2) != null) renderBody.render(player, event.renderer);
+		if (player.getCurrentArmor(1) != null) renderPants.render(player, event.renderer);
+		if (player.getCurrentArmor(0) != null) renderBoots.render(player, event.renderer);		
 
-		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.SHOULDERS.ordinal()) != null) new RenderShoulders().render(player, event.renderer);
-		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.BRACERS.ordinal()) != null) new RenderBracers().render(player, event.renderer);
-		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.GLOVES.ordinal()) != null) new RenderGloves().render(player, event.renderer);
-		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.BELT.ordinal()) != null) new RenderBelt().render(player, event.renderer);		
+		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.SHOULDERS.ordinal()) != null) renderShoulders.render(player, event.renderer);
+		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.BRACERS.ordinal()) != null) renderBracers.render(player, event.renderer);
+		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.GLOVES.ordinal()) != null) renderGloves.render(player, event.renderer);
+		if (ExtendedPlayer.get(player).inventory.getStackInSlot(CustomSlots.BELT.ordinal()) != null) renderBelt.render(player, event.renderer);		
 	}
 
 }

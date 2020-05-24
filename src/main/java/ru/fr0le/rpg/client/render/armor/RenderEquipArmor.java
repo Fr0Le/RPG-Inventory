@@ -6,19 +6,19 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.IModelCustom;
+import ru.fr0le.rpg.client.ClientProxy;
 import ru.fr0le.rpg.client.resources.Resources;
 import ru.fr0le.rpg.items.armor.ArmorType.customArmor;
 
 public class RenderEquipArmor {
 
 	private static ResourceLocation texture;
-	private static IModelCustom model;
+	private static String model;
 
 	public static void setResources(Item equip) {		
 		if(equip instanceof customArmor) {
 			texture = Resources.customArmorTexture;
-			model = Resources.customArmorModel;
+			model = "customArmorModel";
 		}		
 	}
 
@@ -30,7 +30,7 @@ public class RenderEquipArmor {
 		renderModel.modelBipedMain.bipedHead.postRender(0.0625F);
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("head");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "head"));
 		GL11.glPopMatrix();
 	}
 
@@ -42,7 +42,7 @@ public class RenderEquipArmor {
 		renderModel.modelBipedMain.bipedBody.postRender(0.0625F);
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("body");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "body"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -51,7 +51,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(-.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("bodyHandLeft");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "bodyHandLeft"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -60,7 +60,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("bodyHandRight");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "bodyHandRight"));
 		GL11.glPopMatrix();
 	}
 
@@ -73,7 +73,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(-.1275F, 0.75F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("legLeft");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "legLeft"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -82,7 +82,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(.1275F, 0.75F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("legRight");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "legRight"));
 		GL11.glPopMatrix();
 	}
 
@@ -95,7 +95,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(-.125F, 0.75F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("bootLeft");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "bootLeft"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -104,7 +104,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(.125F, 0.75F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("bootRight");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "bootRight"));
 		GL11.glPopMatrix();
 	}
 
@@ -116,7 +116,7 @@ public class RenderEquipArmor {
 		renderModel.modelBipedMain.bipedBody.postRender(0.0625F);
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("belt");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "belt"));
 		GL11.glPopMatrix();
 	}
 
@@ -129,7 +129,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(-.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("shouldeLeft");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "shouldeLeft"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -138,7 +138,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("shouldeRight");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "shouldeRight"));
 		GL11.glPopMatrix();
 	}
 
@@ -151,7 +151,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(-.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("bracerLeft");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "bracerLeft"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -160,7 +160,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("bracerRight");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "bracerRight"));
 		GL11.glPopMatrix();
 	}
 
@@ -173,7 +173,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(-.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("gloveLeft");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "gloveLeft"));
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
@@ -182,7 +182,7 @@ public class RenderEquipArmor {
 		GL11.glRotatef(180.0f, 1F, 0F, 0F);
 		GL11.glTranslatef(.315F, .125F, 0F);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-		model.renderPart("gloveRight");
+		GL11.glCallList(ClientProxy.getRenderPart(model, "gloveRight"));
 		GL11.glPopMatrix();
 	}
 
