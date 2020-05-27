@@ -35,12 +35,26 @@ public class ClientProxy extends CommonProxy {
 		super.Init();
 		renderIcons();
 		renderEquip();
+		renderModels();
 		openInventory();
 	}
 
 	@Override
 	public void postInit() {
 		super.postInit(); 
+	}
+
+	public void renderEquip() {	
+		MinecraftForge.EVENT_BUS.register(new PlayerRenderHandler());
+	}
+
+	private void openInventory() {
+		MinecraftForge.EVENT_BUS.register(new OpenInventory());		
+	}
+
+	@Override
+	public EntityPlayer getPlayerEntity(MessageContext ctx) {
+		return (ctx.side.isClient() ? Minecraft.getMinecraft().thePlayer : super.getPlayerEntity(ctx));
 	}
 
 	public void renderIcons() {	
@@ -55,17 +69,75 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(LoadItemArmor.belt, new RenderItemArmor.renderItemBelt());	
 	}
 
-	public void renderEquip() {	
-		MinecraftForge.EVENT_BUS.register(new PlayerRenderHandler());
-	}
+	public void renderModels() {	
+		//при условии что все *.obj модели будут иметь одинаковую структуру
+		for(int i = 1; i <= 1; i++) {
+			String model = "";
+			//тут добавляем название моделей
+			switch(i) {
+			case(1):
+				model = "customArmorModel";
+			break;
+			default:				
+				break;
+			}
 
-	private void openInventory() {
-		MinecraftForge.EVENT_BUS.register(new OpenInventory());		
-	}
+			for(int j = 1; j <= 15; j++) {
+				String part = "";
+				//тут добавляем название частей модели
+				switch(j) {
+				case(1):
+					part = "head";
+				break;
+				case(2):
+					part = "body";
+				break;
+				case(3):
+					part = "bodyHandLeft";
+				break;
+				case(4):
+					part = "bodyHandRight";
+				break;		
+				case(5):
+					part = "legLeft";
+				break;
+				case(6):
+					part = "legRight";
+				break;
+				case(7):
+					part = "bootLeft";
+				break;
+				case(8):
+					part = "bootRight";
+				break;
+				case(9):
+					part = "belt";
+				break;
+				case(10):
+					part = "shouldeLeft";
+				break;
+				case(11):
+					part = "shouldeRight";
+				break;
+				case(12):
+					part = "bracerLeft";
+				break;
+				case(13):
+					part = "bracerRight";
+				break;
+				case(14):
+					part = "gloveLeft";
+				break;
+				case(15):
+					part = "gloveRight";
+				break;
+				default:
+					break;
+				}
 
-	@Override
-	public EntityPlayer getPlayerEntity(MessageContext ctx) {
-		return (ctx.side.isClient() ? Minecraft.getMinecraft().thePlayer : super.getPlayerEntity(ctx));
+				GL11.glCallList(ClientProxy.getRenderPart(model, part));
+			}
+		}
 	}
 
 	public static int getRenderPart(String model, String partName) {
