@@ -41,19 +41,21 @@ public class ContainerCustomPlayer extends Container {
 	public IInventory craftResult = new InventoryCraftResult();
 	private final EntityPlayer player;
 
-	public static int slotCraftStart = CustomSlots.values().length + ArmorSlots.values().length; //12
-	public static int slotCraftEnd = slotCraftStart + 3; //15
-	public static int slotCraftResult = slotCraftEnd + 1; //16    
-	public static int slotInventoryStart = CustomSlots.values().length + ArmorSlots.values().length + CraftSlots.values().length; //17
-	public static int slotInventoryEnd = slotInventoryStart + 26; //43
-	public static int slotHotbarStart = slotInventoryEnd + 1; //44
-	public static int slotHotbarEnd = slotHotbarStart + 8; //52
+	private static int slotCraftStart = CustomSlots.values().length + ArmorSlots.values().length; //12
+	private static int slotCraftEnd = slotCraftStart + 3; //15
+	private static int slotCraftResult = slotCraftEnd + 1; //16    
+
+	private static int slotInventoryStart = CustomSlots.values().length + ArmorSlots.values().length + CraftSlots.values().length; //17
+	private static int slotInventoryEnd = slotInventoryStart + 26; //43
+
+	private static int slotHotbarStart = slotInventoryEnd + 1; //44
+	private static int slotHotbarEnd = slotHotbarStart + 8; //52
 
 	//к индексам кастомного инвентаря не относится
-	public static int vanillaSlotHotbarStart = 0;
-	public static int vanillaSlotHotbarEnd = 8;	
-	public static int vanillaSlotInventoryStart = 9;
-	public static int vanillaSlotInventoryEnd = 35;
+	private static int vanillaSlotHotbarStart = 0;
+	private static int vanillaSlotHotbarEnd = 8;	
+	private static int vanillaSlotInventoryStart = 9;
+	private static int vanillaSlotInventoryEnd = 35;
 
 	public ContainerCustomPlayer(EntityPlayer player, InventoryPlayer inventoryPlayer, InventoryCustomPlayer inventoryCustom) {
 		this.player = player;
@@ -112,44 +114,45 @@ public class ContainerCustomPlayer extends Container {
 	public ItemStack transferStackInSlot(EntityPlayer player, int index) {
 		ItemStack itemStack = null;
 		Slot slot = (Slot)inventorySlots.get(index);
-
 		if(slot != null && slot.getHasStack()) {
 			ItemStack itemStack1 = slot.getStack();
-			itemStack = itemStack1.copy();
 
 			//если это кастомные слоты
 			if(index < CustomSlots.values().length + ArmorSlots.values().length + CraftSlots.values().length) {
+
 				//если слот результата крафта
 				if(index == slotCraftResult) {
 					itemCraftToInventoryOrHotbar(slot, itemStack1);
 					//другие кастомные слоты
 				} else {
-					if (!this.mergeItemStack(itemStack1, slotInventoryStart, slotHotbarEnd, false)) {
+					if (!this.mergeItemStack(itemStack1, slotInventoryStart, slotHotbarEnd + 1, false)) {
 						return null;
 					}
 
-					changeSlot(slot, itemStack);
+					changeSlot(slot, itemStack1);
 				}
 				//если это броня в инвентаре или хотбаре
-			} else if(itemStack1.getItem() instanceof customArmor) {
+			} else if(itemStack1.getItem() instanceof customArmor) {				
 				itemToArmorSlot(slot, itemStack1);		
 				//если это аксессуары в инвентаре или хотбаре
 			} else if(itemStack1.getItem() instanceof customJewel) {
 				itemToJewelSlot(slot, itemStack1);		
 				//если это хотбар или инвентарь
 			} else if(vanillaSlotHotbarStart <= slot.getSlotIndex() && slot.getSlotIndex() <= vanillaSlotInventoryEnd) {
-				itemToInventoryOrHotbar(slot, itemStack1);		
-				//если чтото другое ;D
+				itemToInventoryOrHotbar(slot, itemStack1);
 			} else {
+				//если чтото другое ;D
 				player.addChatMessage(new ChatComponentText("transferStackInSlot error - сообщите автору для фикса")); 
 			}
 		}
+
 		return itemStack;
 	}
 
 	public void itemToInventoryOrHotbar(Slot slot, ItemStack itemStack) {
+		ItemStack itemStack1 = itemStack.copy();
 		if(vanillaSlotHotbarStart <= slot.getSlotIndex() && slot.getSlotIndex() <= vanillaSlotHotbarEnd) {
-			if (!this.mergeItemStack(itemStack, slotInventoryStart, slotInventoryEnd, false)) {
+			if (!this.mergeItemStack(itemStack1, slotInventoryStart, slotInventoryEnd + 1, false)) {
 				return;
 			}
 
@@ -157,7 +160,7 @@ public class ContainerCustomPlayer extends Container {
 		}
 
 		if(vanillaSlotInventoryStart <= slot.getSlotIndex() && slot.getSlotIndex() <= vanillaSlotInventoryEnd) {
-			if (!this.mergeItemStack(itemStack, slotHotbarStart, slotHotbarEnd, false)) {
+			if (!this.mergeItemStack(itemStack1, slotHotbarStart, slotHotbarEnd + 1, false)) {
 				return;
 			}
 
@@ -168,7 +171,7 @@ public class ContainerCustomPlayer extends Container {
 	public void itemCraftToInventoryOrHotbar(Slot slot, ItemStack itemStack) {
 		ItemStack itemStack1 = itemStack.copy();
 
-		if (!this.mergeItemStack(itemStack1, slotInventoryStart, slotHotbarEnd, false)) {
+		if (!this.mergeItemStack(itemStack1, slotInventoryStart, slotHotbarEnd + 1, false)) {
 			return;
 		}
 
@@ -184,7 +187,7 @@ public class ContainerCustomPlayer extends Container {
 	}
 
 	public void changeSlot(Slot slot, ItemStack itemStack) {
-		if (itemStack.stackSize <= 0) {
+		if(itemStack.stackSize <= 0) {
 			slot.putStack((ItemStack)null);
 		} else {
 			slot.onSlotChanged();
